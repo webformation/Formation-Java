@@ -10,10 +10,9 @@ package com.formation.mediatheque;
 /*
  * 
  */
+public class Livre extends Media implements Empruntable {
 
-public class Livre extends Media {
-
-private int nbPage;
+    private int nbPage;
 
     public Livre(String Titre, String Auteur, int nbPage) throws Exception {
         super(Titre, Auteur);
@@ -62,8 +61,32 @@ private int nbPage;
         }
         return super.equals(obj);
     }
-        @Override
+
+    @Override
     public String toString() {
-        return super.toString() +" : Livre{" +  "nbPage=" + nbPage + '}';
+        return super.toString() + " : Livre{" + "nbPage=" + nbPage + '}';
+    }
+
+    private boolean disponible = true;
+    @Override
+    public boolean estDisponible() {
+        return disponible;
+    }
+Personne p = null;
+    @Override
+    public boolean Emprunter(Personne p) {
+        if (disponible) {
+            this.p = p;
+            disponible = false;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean Rendre() {
+        p = null;
+        disponible = true;
+        return true;
     }
 }

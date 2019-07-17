@@ -42,6 +42,13 @@ public class Saisie {
         for (var l : catalogue) {
             System.out.println(l);
         }
+        System.out.println("----------------------------");
+        System.out.println("Catalogue empruntable");
+        for (var l : catalogue) {
+            if (l instanceof Empruntable) {
+                System.out.println(l);
+            }
+        }
     }
 
 }
