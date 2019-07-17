@@ -13,7 +13,7 @@ import java.util.Objects;
  * et sera transformée en classe abstraite.
  * @author D. Colombani
  */
-public class Media {
+abstract public class Media {
    
     private String Titre;
 
