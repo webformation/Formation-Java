@@ -6,8 +6,12 @@ package com.formation.mediatheque;
 import java.util.Objects;
 
 /**
- *
- * @author D. Colombani <dc@webformation.fr>
+ * Représentation d'un ouvrage de la médiathèque
+ * 
+ * Cette classe est, dans cette version, une classe concrète, sans classe dérivée.
+ * Dans les prochaines étapes du projet, elle servira de classe de base pour d'autres classes 
+ * et sera transformée en classe abstraite.
+ * @author D. Colombani
  */
 public class Media {
    
@@ -27,8 +31,11 @@ public class Media {
      *
      * @param Titre new value of Titre
      */
-    public void setTitre(String Titre) {
-        this.Titre = Titre;
+    public void setTitre(String Titre) throws Exception {
+                if (Titre == null || Titre.strip().length() == 0) {
+            throw new Exception("Le titre est vide");
+        }
+        this.Titre = Titre.strip();
     }
 
     private String Auteur;
@@ -47,13 +54,16 @@ public class Media {
      *
      * @param Auteur new value of Auteur
      */
-    public void setAuteur(String Auteur) {
-        this.Auteur = Auteur;
+    public void setAuteur(String Auteur) throws Exception {
+        if (Auteur == null || Auteur.strip().length() == 0) {
+            throw new Exception("L'auteur est vide");
+        }
+        this.Auteur = Auteur.strip();
     }
 
-    public Media(String Titre, String Auteur) {
-        this.Titre = Titre;
-        this.Auteur = Auteur;
+    public Media(String Titre, String Auteur) throws Exception {
+        setAuteur(Auteur);
+        setTitre(Titre);
     }
 
     @Override
@@ -87,7 +97,11 @@ public class Media {
 
     @Override
     public String toString() {
-        return Titre + " (" + Auteur + ")";
+        var sb = new StringBuilder(Titre);
+        sb.append(" (");
+        sb.append(Auteur );
+        sb.append(")");
+        return  sb.toString();
     }
  
 }
