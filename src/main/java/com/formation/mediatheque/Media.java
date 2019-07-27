@@ -3,6 +3,7 @@
  */
 package com.formation.mediatheque;
 
+import java.io.PrintStream;
 import java.util.Objects;
 
 /**
@@ -104,4 +105,5 @@ abstract public class Media {
         return  sb.toString();
     }
  
+    public abstract void enregistre(PrintStream p); 
 }

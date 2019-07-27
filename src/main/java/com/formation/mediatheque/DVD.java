@@ -3,6 +3,8 @@
  */
 package com.formation.mediatheque;
 
+import java.io.PrintStream;
+
 /**
  *
  * @author D. Colombani <dc@webformation.fr>
@@ -63,5 +65,15 @@ public class DVD extends Media {
     public String toString() {
         return super.toString() +" : DVD{" +  "duree=" + duree + '}';
     }
-    
+        @Override
+    public void enregistre(PrintStream p) {
+        StringBuilder sb = new StringBuilder("D");
+        sb.append(";");
+        sb.append(getTitre());
+        sb.append(";");
+        sb.append(getAuteur());
+        sb.append(";");
+        sb.append(duree);
+        p.println(sb.toString());
+    }
 }

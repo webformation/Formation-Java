@@ -3,6 +3,8 @@
  */
 package com.formation.mediatheque;
 
+import java.io.PrintStream;
+
 /**
  *
  * @author D. Colombani <dc@webformation.fr>
@@ -89,4 +91,17 @@ Personne p = null;
         disponible = true;
         return true;
     }
+
+    @Override
+    public void enregistre(PrintStream p) {
+        StringBuilder sb = new StringBuilder("L");
+        sb.append(";");
+        sb.append(getTitre());
+        sb.append(";");
+        sb.append(getAuteur());
+        sb.append(";");
+        sb.append(nbPage);
+        p.println(sb.toString());
+    }
+    
 }
